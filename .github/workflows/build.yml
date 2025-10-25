@@ -1,7 +1,6 @@
-      - name: Build (right)
-        run: |
-          west build -s zmk/app -d build/zonkey_R -b seeeduino_xiao_ble \
-            -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
-            -DSHIELD="zonkey_R;rgbled_adapter" \
-            -DZMK_EXTRA_MODULES="$GITHUB_WORKSPACE" \
-            -DBOARD_ROOT="$GITHUB_WORKSPACE"
+name: Build ZMK firmware
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
